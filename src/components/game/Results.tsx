@@ -98,7 +98,7 @@ export const Results: React.FC<Props> = ({
                 <ListItem key={`q-${i}`}>
                   <ListItemText
                     primary={he.decode(questions[i].question)}
-                    secondary={`Correct answer: ${he.decode(
+                    secondary={`Answer: ${he.decode(
                       questions[i].correct_answer
                     )}`}
                   />
