@@ -1,6 +1,6 @@
-# Des-Trivia
+# Trivia
 
-Des-Trivia is a fun and engaging trivia app built with React and MUI Material.
+Trivia is a fun and engaging trivia app built with React and MUI Material.
 
 ## Features
 
