@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from '../layout/Container';
-import { Skeleton } from '@mui/material';
+import { Skeleton, Box } from '@mui/material';
 import { styled } from '@mui/system';
 
 const LoadingSkeleton = styled(Skeleton)(({ theme }) => ({
@@ -8,13 +8,20 @@ const LoadingSkeleton = styled(Skeleton)(({ theme }) => ({
   marginBottom: theme.spacing(3),
 }));
 
+const ButtonsWrapper = styled(Box)(() => ({
+  display: 'flex',
+  justifyContent: 'flex-end',
+}));
+
 export const Loading: React.FC = () => {
   return (
     <Container>
-      <LoadingSkeleton variant='rounded' height={58} />
-      <LoadingSkeleton variant='rounded' height={58} />
-      <LoadingSkeleton variant='rounded' height={58} />
-      <Skeleton variant='rounded' width={124} height={38} />
+      <LoadingSkeleton variant='rounded' height={56} />
+      <LoadingSkeleton variant='rounded' height={56} />
+      <LoadingSkeleton variant='rounded' height={56} />
+      <ButtonsWrapper>
+        <Skeleton variant='rounded' width={69} height={36} />
+      </ButtonsWrapper>
     </Container>
   );
 };

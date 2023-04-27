@@ -17,7 +17,7 @@ const Content = styled(Box)(({ theme }) => ({
   paddingBottom: theme.spacing(4),
   [theme.breakpoints.down('sm')]: {
     paddingBlock: theme.spacing(2),
-    paddingInline: theme.spacing(1),
+    paddingInline: theme.spacing(0),
   },
 }));
 

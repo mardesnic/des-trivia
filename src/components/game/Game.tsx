@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { TriviaQuestion as TriviaQuestionType } from '../../services/triviaService';
 import he from 'he';
 import {
   Typography,
   List,
-  ListItem as MuiListItem,
+  ListItem,
   ListItemText,
   LinearProgress,
+  ListItemButton,
 } from '@mui/material';
 import { styled } from '@mui/system';
-import { useTheme } from '@mui/material/styles';
 import { Container } from '../layout/Container';
 
 interface Props {
@@ -28,29 +28,60 @@ const Progress = styled(LinearProgress)(() => ({
 const QuestionText = styled(Typography)(() => ({
   minHeight: 48,
 }));
-
-const ListItem = styled(MuiListItem)(({ theme }) => ({
-  borderRadius: theme.shape.borderRadius,
-  '&:hover': {
-    backgroundColor: theme.palette.primary.light,
-    cursor: 'pointer',
-  },
-}));
+interface AnswerProps {
+  selected: boolean;
+  disabledAnswer: boolean;
+}
+const Answer = styled(ListItemButton)<AnswerProps>(
+  ({ theme, selected, disabledAnswer }) => ({
+    borderRadius: theme.shape.borderRadius,
+    opacity: selected ? 1 : 0.3,
+    pointerEvents: disabledAnswer ? 'none' : 'auto',
+  })
+);
 
 export const Game: React.FC<Props> = ({ question, onAnswer, progress }) => {
-  const answers = [...question.incorrect_answers, question.correct_answer].sort(
-    () => Math.random() - 0.5
-  );
-  const theme = useTheme();
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [shuffledAnswers, setShuffledAnswers] = useState<string[]>([]);
+
+  useEffect(() => {
+    const answers = [...question.incorrect_answers, question.correct_answer];
+    answers.sort(() => Math.random() - 0.5);
+    setShuffledAnswers(answers);
+  }, [question]);
+
+  useEffect(() => {
+    if (selectedAnswer === null) {
+      return;
+    }
+
+    const timeoutId = setTimeout(() => {
+      onAnswer(selectedAnswer);
+      setSelectedAnswer(null);
+    }, 380);
+
+    return () => clearTimeout(timeoutId);
+  }, [selectedAnswer, onAnswer]);
 
   return (
     <Container>
       <Progress variant='determinate' value={progress} />
-      <QuestionText>{he.decode(question.question)}</QuestionText>
+      <QuestionText variant='subtitle1'>
+        {he.decode(question.question)}
+      </QuestionText>
       <List>
-        {answers.map((answer, index) => (
-          <ListItem key={index} theme={theme} onClick={() => onAnswer(answer)}>
-            <ListItemText primary={he.decode(answer)} />
+        {shuffledAnswers.map((answer, index) => (
+          <ListItem
+            sx={{ paddingLeft: 0, paddingRight: 0 }}
+            key={index}
+            onClick={() => setSelectedAnswer(answer)}
+          >
+            <Answer
+              disabledAnswer={selectedAnswer !== null}
+              selected={selectedAnswer === answer || selectedAnswer === null}
+            >
+              <ListItemText primary={he.decode(answer)} />
+            </Answer>
           </ListItem>
         ))}
       </List>

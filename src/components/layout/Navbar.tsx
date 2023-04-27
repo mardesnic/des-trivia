@@ -7,7 +7,7 @@ import { APP_NAME } from '../../const';
 
 const NavbarTitle = styled(Typography)(() => ({
   flexGrow: 1,
-  textAlign: 'center',
+  textAlign: 'left',
   fontWeight: 700,
 }));
 
@@ -18,7 +18,7 @@ export const Navbar: React.FC = () => {
     <>
       <AppBar position='static'>
         <Toolbar>
-          <NavbarTitle variant='h6'>{APP_NAME}</NavbarTitle>
+          <NavbarTitle variant='h1'>{APP_NAME}</NavbarTitle>
           <IconButton
             edge='end'
             color='inherit'

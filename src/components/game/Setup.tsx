@@ -12,11 +12,11 @@ import {
   Select,
   capitalize,
 } from '@mui/material';
-import { styled } from '@mui/system';
+import { Box, styled } from '@mui/system';
 import { Container } from '../layout/Container';
 import { Loading } from '../shared/Loading';
 import { Error } from '../shared/Error';
-import { ALL_CATEGORIES, DIFICULTIES } from '../../const';
+import { ALL_CATEGORIES, DIFICULTIES, NUMBER_OF_QUESTIONS } from '../../const';
 
 type Props = {
   onSubmit: (values: TriviaApiParams) => void;
@@ -31,6 +31,11 @@ const Label = styled(InputLabel)(() => ({
   '&.Mui-focused': {
     color: 'inherit',
   },
+}));
+
+const ButtonsWrapper = styled(Box)(() => ({
+  display: 'flex',
+  justifyContent: 'flex-end',
 }));
 
 export const Setup: React.FC<Props> = ({ onSubmit, settings }) => {
@@ -119,16 +124,18 @@ export const Setup: React.FC<Props> = ({ onSubmit, settings }) => {
             onChange={(e) => setAmount(e.target.value)}
             fullWidth
           >
-            {[1, 5, 10].map((value) => (
+            {NUMBER_OF_QUESTIONS.map((value) => (
               <MenuItem key={value} value={value}>
                 {value}
               </MenuItem>
             ))}
           </Select>
         </FormControl>
-        <SubmitButton variant='contained' color='primary' type='submit'>
-          Start Trivia
-        </SubmitButton>
+        <ButtonsWrapper>
+          <SubmitButton variant='contained' color='primary' type='submit'>
+            Start
+          </SubmitButton>
+        </ButtonsWrapper>
       </form>
     </Container>
   );
