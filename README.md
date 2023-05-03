@@ -2,6 +2,10 @@
 
 Trivia is a fun and engaging trivia app built with React and MUI Material.
 
+## Demo
+
+Check out the live demo at: https://mardesnic.github.io/des-trivia/
+
 ## Features
 
 - Fetches trivia questions from Open Trivia DB Api
