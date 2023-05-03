@@ -12,8 +12,9 @@ import {
 import { Box } from '@mui/system';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import Language from '@mui/icons-material/Language';
 import { styled } from '@mui/system';
-import { EMAIL, GITHUB, NAME, TWITTER } from '../../const';
+import { EMAIL, GITHUB, NAME, WEBSITE, TWITTER } from '../../const';
 
 const DrawerContent = styled(Box)(({ theme }) => ({
   width: 300,
@@ -43,6 +44,14 @@ export const CustomDrawer: React.FC<{ open: boolean; onClose: () => void }> = ({
           <Box my={2}>
             <Divider />
           </Box>
+          <ListItem>
+            <ButtonBase component='a' href={WEBSITE}>
+              <ListItemIcon>
+                <Language />
+              </ListItemIcon>
+              <ListItemText primary='Website' />
+            </ButtonBase>
+          </ListItem>
           <ListItem>
             <ButtonBase component='a' href={GITHUB} target='_blank'>
               <ListItemIcon>
