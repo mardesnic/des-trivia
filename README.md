@@ -11,5 +11,4 @@ Check out the live demo at: https://mardesnic.github.io/des-trivia/
 - Fetches trivia questions from Open Trivia DB Api
 - Utilizes React Query for data fetching and caching
 - Interactive user interface with MUI Material components
-- Styled with Emotion CSS-in-JS library
 - Confetti animation using React-Confetti
