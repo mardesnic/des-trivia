@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, IconButton } from '@mui/material';
 import { styled } from '@mui/system';
-import MenuIcon from '@mui/icons-material/Menu';
+import { Menu as MenuIcon } from '@mui/icons-material';
 import { CustomDrawer } from './Drawer';
 import { APP_NAME } from '../../const';
 

@@ -12,7 +12,7 @@ import { Container } from '../layout/Container';
 import he from 'he';
 import { styled } from '@mui/system';
 import Confetti from 'react-confetti';
-import useWindowSize from 'react-use/lib/useWindowSize';
+import useWindowSize from 'react-use/esm/useWindowSize';
 import { getEndGameMessage } from '../../utils/functions';
 
 type Props = {

@@ -19,9 +19,11 @@ export const Trivia: React.FC = () => {
   const [incorrectAnswerIndexes, setIncorrectAnswerIndexes] = useState<
     number[]
   >([]);
-  const [settings, setSettings] = useState(
-    loadFromLocalStorage(LOCAL_STORAGE_KEY, DEFAULT_SETTINGS)
-  );
+  const [settings, setSettings] = useState<TriviaApiParams>(() => {
+    const stored = loadFromLocalStorage(LOCAL_STORAGE_KEY, DEFAULT_SETTINGS);
+    if (!Array.isArray(stored.categories)) return DEFAULT_SETTINGS;
+    return stored;
+  });
   const [showSettings, setShowSettings] = useState(true);
 
   useEffect(() => {
@@ -34,7 +36,7 @@ export const Trivia: React.FC = () => {
     isFetching,
     isError,
     refetch: refetchQuestions,
-  } = useTriviaQuestions(settings as TriviaApiParams);
+  } = useTriviaQuestions(settings);
 
   const handleQuizStart = async (settings: TriviaApiParams) => {
     setSettings(settings);

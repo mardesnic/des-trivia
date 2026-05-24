@@ -10,9 +10,7 @@ import {
   ButtonBase,
 } from '@mui/material';
 import { Box } from '@mui/system';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import Language from '@mui/icons-material/Language';
+import { GitHub as GitHubIcon, Twitter as TwitterIcon, Language } from '@mui/icons-material';
 import { styled } from '@mui/system';
 import { EMAIL, GITHUB, NAME, WEBSITE, TWITTER } from '../../const';
 

@@ -32,8 +32,9 @@ interface AnswerProps {
   selected: boolean;
   disabledAnswer: boolean;
 }
-const Answer = styled(ListItemButton)<AnswerProps>(
-  ({ theme, selected, disabledAnswer }) => ({
+const Answer = styled(ListItemButton, {
+  shouldForwardProp: (prop) => prop !== 'disabledAnswer',
+})<AnswerProps>(({ theme, selected, disabledAnswer }) => ({
     borderRadius: theme.shape.borderRadius,
     opacity: selected ? 1 : 0.3,
     pointerEvents: disabledAnswer ? 'none' : 'auto',

@@ -10,10 +10,10 @@ export const DIFICULTIES = {
   MEDIUM: 'medium',
   HARD: 'hard',
 };
-export const NUMBER_OF_QUESTIONS = [1, 5, 10, 25, 50];
+export const NUMBER_OF_QUESTIONS = [1, 5, 10, 20];
 export const DEFAULT_SETTINGS = {
   amount: '5',
-  category: ALL_CATEGORIES,
+  categories: [ALL_CATEGORIES],
   difficulty: DIFICULTIES.EASY,
 };
 export const LOCAL_STORAGE_KEY = 'triviaSettings';
